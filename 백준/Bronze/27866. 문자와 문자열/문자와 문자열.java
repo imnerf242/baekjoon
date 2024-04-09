@@ -6,9 +6,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String str = br.readLine();
-        int a = Integer.parseInt(br.readLine())-1;
+        String a = br.readLine();
+        
+        int count = Integer.parseInt(a)-1;
 
-        System.out.println(str.charAt(a));
+        char b = str.charAt(count);
+
+        System.out.println(b);
         
 
 
