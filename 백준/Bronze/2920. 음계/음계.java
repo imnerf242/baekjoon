@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.BufferOverflowException;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -8,7 +9,9 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int[] arr= new int[8];
-        int count =0;
+        int[] asd = {1,2,3,4,5,6,7,8};
+        int[] dsd = {8,7,6,5,4,3,2,1};
+
         String str = br.readLine();
         StringTokenizer st = new StringTokenizer(str, " ");
 
@@ -16,23 +19,13 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        for(int k=0; k<7; k++){
-            
-            if(arr[k] < arr[k+1]){
-                count +=1;
-            }
-            if(arr[k] > arr[k+1]){
-                count -=1;
-            }
-            
-        }
-        if(count == 7){
+        if(Arrays.equals(arr, asd)){
             System.out.println("ascending");
         }
-        else if(count == -7){
+        else if(Arrays.equals(arr, dsd)){
             System.out.println("descending");
         }
-        else{
+        else {
             System.out.println("mixed");
         }
     }
