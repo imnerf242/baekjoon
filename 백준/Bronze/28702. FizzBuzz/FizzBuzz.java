@@ -14,8 +14,7 @@ public class Main {
         }else{
             if(s2.matches("[0-9]+")){
                 result = Integer.parseInt(s2)+2;
-            }
-            else{
+            }else{
                 if(s3.matches("[0-9]+")){
                     result = Integer.parseInt(s3)+1;
                 }
@@ -23,15 +22,18 @@ public class Main {
         }
         if(result % 3 == 0 && result % 5 ==0){
            System.out.println("FizzBuzz");
-        }
-        if(result % 3 == 0 && result % 5 !=0){
-            System.out.println("Fizz");
-        }
-        if(result % 3 != 0 && result % 5 ==0){
-            System.out.println("Buzz");
-        }
-        if(result % 3 != 0 && result % 5 !=0){
-            System.out.println(result);
+        }else{
+            if(result % 3 == 0 && result % 5 !=0){
+                System.out.println("Fizz");
+            }else{
+                if(result % 3 != 0 && result % 5 ==0){
+                    System.out.println("Buzz");
+                }else{
+                    if(result % 3 != 0 && result % 5 !=0){
+                        System.out.println(result);
+                    }
+                }
+            }
         }
     }
 }
