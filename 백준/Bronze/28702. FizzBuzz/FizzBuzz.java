@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuffer sb = new StringBuffer();
         int result=0;
         String s1 = br.readLine();
         String s2 = br.readLine();
@@ -20,20 +21,16 @@ public class Main {
                 }
             }
         }
-        if(result % 3 == 0 && result % 5 ==0){
-           System.out.println("FizzBuzz");
-        }else{
-            if(result % 3 == 0 && result % 5 !=0){
-                System.out.println("Fizz");
-            }else{
-                if(result % 3 != 0 && result % 5 ==0){
-                    System.out.println("Buzz");
-                }else{
-                    if(result % 3 != 0 && result % 5 !=0){
-                        System.out.println(result);
-                    }
-                }
-            }
+        if(result % 3 == 0 ){
+            sb.append("Fizz");
         }
+        if(result % 5 == 0 ){
+            sb.append("Buzz");
+        }
+        if(sb.length() == 0){
+            sb.append(result);
+        }
+
+        System.out.println(sb);
     }
 }
