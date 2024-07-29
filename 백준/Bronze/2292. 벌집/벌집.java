@@ -12,7 +12,7 @@ public class Main {
         int range = 2;
 
         if(N==1){
-            System.out.println(1);
+            
         }
         else{
             while(range<=N){
@@ -20,8 +20,7 @@ public class Main {
                 range = range + (count * 6);
                 count++;
             }
-            System.out.println(count);
         }
-        
+        System.out.println(count);
     }
 }
