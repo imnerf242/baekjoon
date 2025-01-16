@@ -6,15 +6,17 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int[][] arr;
-    static boolean[] visit;
+    static boolean[] tf;
     static int N,M,V;
+    static StringBuilder sb_dfs= new StringBuilder();
+    static StringBuilder sb_bfs= new StringBuilder();
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer st;
 
         arr = new int[1001][1001];
-        visit = new boolean[1001]; 
+        tf = new boolean[1001]; 
 
         st = new StringTokenizer(br.readLine());
 
@@ -32,27 +34,33 @@ public class Main {
         }
 
         dfs(V);
+        System.out.print(sb_dfs);
 
-        visit = new boolean[1001];
         System.out.println();
+
+        tf = new boolean[1001];
         bfs(V);
+
+        System.out.print(sb_bfs);
+
+        
     }
 
-    static void bfs(int start) {
+    static void bfs(int a) {
         Queue<Integer> queue = new LinkedList<>();
 
-        queue.offer(start);
-        visit[start] = true;
-        System.out.print(start + " ");
+        queue.offer(a);
+        tf[a] = true;
 
+        sb_bfs.append(a).append(" ");
         while(!queue.isEmpty()){
-            start = queue.poll();
+            int temp = queue.poll();
 
             for(int i =1; i <= N; i++){
-                if(arr[start][i] == 1 && !visit[i]){
+                if(arr[temp][i] == 1 && !tf[i]){
                     queue.offer(i);
-                    visit[i] = true;
-                    System.out.print(i + " ");
+                    tf[i] = true;
+                    sb_bfs.append(i).append(" ");
                 }
             }
         }
@@ -60,13 +68,12 @@ public class Main {
     }
 
     static void dfs(int a){
-        visit[a] = true;
-        
-        System.out.print(a + " ");
+        tf[a] = true;
+        sb_dfs.append(a).append(" ");
 
         for(int i = 1; i<= N; i++){
-            if(arr[a][i] == 1 && !visit[i]){
-                visit[i] = true;
+            if(arr[a][i] == 1 && !tf[i]){
+                tf[i] = true;
 
                 dfs(i);
             }
