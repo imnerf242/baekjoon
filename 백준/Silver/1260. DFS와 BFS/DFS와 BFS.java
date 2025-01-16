@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int[][] arr;
-    static boolean[] tf;
+    static boolean[] visit;
     static int N,M,V;
     static StringBuilder sb_dfs= new StringBuilder();
     static StringBuilder sb_bfs= new StringBuilder();
@@ -16,7 +16,7 @@ public class Main {
         StringTokenizer st;
 
         arr = new int[1001][1001];
-        tf = new boolean[1001]; 
+        visit = new boolean[1001]; 
 
         st = new StringTokenizer(br.readLine());
 
@@ -38,7 +38,7 @@ public class Main {
 
         System.out.println();
 
-        tf = new boolean[1001];
+        visit = new boolean[1001];
         bfs(V);
 
         System.out.print(sb_bfs);
@@ -46,20 +46,21 @@ public class Main {
         
     }
 
-    static void bfs(int a) {
+    static void bfs(int start) {
         Queue<Integer> queue = new LinkedList<>();
 
-        queue.offer(a);
-        tf[a] = true;
+        queue.offer(start);
+        visit[start] = true;
 
-        sb_bfs.append(a).append(" ");
+        sb_bfs.append(start).append(" ");
+
         while(!queue.isEmpty()){
             int temp = queue.poll();
 
             for(int i =1; i <= N; i++){
-                if(arr[temp][i] == 1 && !tf[i]){
+                if(arr[temp][i] == 1 && !visit[i]){
                     queue.offer(i);
-                    tf[i] = true;
+                    visit[i] = true;
                     sb_bfs.append(i).append(" ");
                 }
             }
@@ -67,13 +68,13 @@ public class Main {
 
     }
 
-    static void dfs(int a){
-        tf[a] = true;
-        sb_dfs.append(a).append(" ");
+    static void dfs(int start){
+        visit[start] = true;
+        sb_dfs.append(start).append(" ");
 
         for(int i = 1; i<= N; i++){
-            if(arr[a][i] == 1 && !tf[i]){
-                tf[i] = true;
+            if(arr[start][i] == 1 && !visit[i]){
+                visit[i] = true;
 
                 dfs(i);
             }
